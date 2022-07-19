@@ -32,7 +32,7 @@ Install [Node.js and NPM](https://nodejs.org/en/download/)
 
 - on OSX use [homebrew](http://brew.sh) `brew install node`
 - on Windows use [chocolatey](https://chocolatey.org/) `choco install nodejs`
-- on a Debian Linux distribution use [apt](https://wiki.debian.org/Apt) `apt install nodejs npm`
+- on a Debian Linux distribution use [apt](https://ubuntu.com/server/docs/package-management) `sudo apt install nodejs npm`
 
 Install yarn globally
 
