@@ -1,4 +1,8 @@
 import express from "express";
+import config from 'config';
+import connect from './utils/connect'
+
+const port = config.get<number>('port');
 
 export const app = express();
 
@@ -6,6 +10,8 @@ app.get("/", (req, res) => {
     res.send("Nothing to see here 😄")
 })
 
-const port = process.env.PORT || 3000;
+app.listen(port, async () => {
+    console.log(`App running on http://localhost:${port}`);
 
-app.listen(port, () => console.log(`listening on port ${port}`));
+    await connect();
+});
