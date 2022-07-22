@@ -40,10 +40,16 @@ Install yarn globally
 npm install --global yarn
 ```
 
-Then run
+Then install the node modules
 
 ```bash
 yarn install
+```
+
+Install docker then start the mongodb container
+
+```bash
+docker compose up -d
 ```
 
 ### Step 2: Run the Project
