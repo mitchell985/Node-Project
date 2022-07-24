@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d3a34203-6dac-480e-8aac-0dce44241f83",
+		"_postman_id": "46f2b617-58b9-4524-ac45-22a02e5d333d",
 		"name": "REST API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -44,8 +44,8 @@
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"console.log(jsonData)",
-									"postman.setEnvironmentVariable(\"accessToken\", jsonData.accessToken);",
-									"postman.setEnvironmentVariable(\"refreshToken\", jsonData.refreshToken);"
+									"pm.collectionVariables.set(\"accessToken\", jsonData.accessToken);",
+									"pm.collectionVariables.set(\"refreshToken\", jsonData.refreshToken);"
 								],
 								"type": "text/javascript"
 							}
@@ -83,15 +83,12 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"",
 									"const newAccessToken = responseHeaders['x-access-token']",
 									"",
 									"if(newAccessToken){",
 									"    console.log('Set new access token')",
-									"postman.setEnvironmentVariable(\"accessToken\", newAccessToken);",
-									"}",
-									"",
-									""
+									"pm.collectionVariables.set(\"accessToken\", newAccessToken);",
+									"}"
 								],
 								"type": "text/javascript"
 							}
@@ -140,7 +137,7 @@
 									"",
 									"if(newAccessToken){",
 									"    console.log('Set new access token')",
-									"postman.setEnvironmentVariable(\"accessToken\", newAccessToken);",
+									"pm.collectionVariables.set(\"accessToken\", newAccessToken);",
 									"}",
 									"",
 									""
@@ -194,14 +191,14 @@
 							"script": {
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"productId\", jsonData.productId);",
+									"pm.collectionVariables.set(\"productId\", jsonData.productId);",
 									"",
 									"",
 									"const newAccessToken = responseHeaders['x-access-token']",
 									"",
 									"if(newAccessToken){",
 									"    console.log('Set new access token')",
-									"postman.setEnvironmentVariable(\"accessToken\", newAccessToken);",
+									"pm.collectionVariables.set(\"accessToken\", newAccessToken);",
 									"}"
 								],
 								"type": "text/javascript"
@@ -436,6 +433,40 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Get Index",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{endpoint}}/",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{endpoint}}/healthcheck",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {
