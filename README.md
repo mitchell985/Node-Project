@@ -32,7 +32,7 @@ Install [Node.js and NPM](https://nodejs.org/en/download/)
 
 - on OSX use [homebrew](http://brew.sh) `brew install node`
 - on Windows use [chocolatey](https://chocolatey.org/) `choco install nodejs`
-- on a Debian Linux distribution use [apt] `apt install nodejs npm`
+- on a Debian Linux distribution use [apt](https://ubuntu.com/server/docs/package-management) `sudo apt install nodejs npm`
 
 make sure node is at least v16 with the following command
 
@@ -48,10 +48,16 @@ Install yarn globally
 npm install --global yarn
 ```
 
-Then run
+Then install the node modules
 
 ```bash
 yarn install
+```
+
+Install docker then start the mongodb container
+
+```bash
+docker compose up -d
 ```
 
 ### Step 2: Run the Project
