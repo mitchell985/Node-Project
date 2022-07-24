@@ -34,6 +34,14 @@ Install [Node.js and NPM](https://nodejs.org/en/download/)
 - on Windows use [chocolatey](https://chocolatey.org/) `choco install nodejs`
 - on a Debian Linux distribution use [apt](https://ubuntu.com/server/docs/package-management) `sudo apt install nodejs npm`
 
+make sure node is at least v16 with the following command
+
+```bash
+node -v
+```
+
+If you have any issues updating it try this [link](https://github.com/nodesource/distributions/issues/1157)
+
 Install yarn globally
 
 ```bash
