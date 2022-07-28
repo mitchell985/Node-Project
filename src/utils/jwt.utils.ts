@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import config from "config";
+import logger from "./logger";
 
 const privateKey = config.get<string>("privateKey");
 const publicKey = config.get<string>("publicKey");
@@ -19,11 +20,12 @@ export function verifyJwt(token: string) {
       expired: false,
       decoded,
     };
-  } catch (e: any) {
-    console.error(e);
+  } catch (error) {
+    logger.error(error);
+    logger.error("Try creating a session");
     return {
       valid: false,
-      expired: e.message === "jwt expired",
+      expired: "jwt expired",
       decoded: null,
     };
   }

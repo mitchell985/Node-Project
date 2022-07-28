@@ -3,13 +3,17 @@
  * TODO: use...
  */
 export interface WeatherDocument {
-  cityName: string;
-  cityCountry: string;
-  latitude: number;
-  longitude: number;
+  city: CityLocation;
   temperature: number;
   windspeed: number;
-  interpretWeatherCode(weatherCode: number): Promise<boolean>;
+  weatherPhrase: string;
+  // interpretWeatherCode(weatherCode: number): Promise<string>;
+}
+
+export interface CityLocation {
+  cityName: string;
+  latitude: number;
+  longitude: number;
 }
 
 /**
@@ -19,7 +23,7 @@ export interface WeatherDocument {
  * @param weatherCode to convert to a weather phrase
  * @returns A weather phrase from the weather code
  */
-async function interpretWeatherCode(weatherCode: number) {
+export async function interpretWeatherCode(weatherCode: number) {
   let weatherPhrase = String(weatherCode);
 
   switch (weatherCode) {
