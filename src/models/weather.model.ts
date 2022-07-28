@@ -1,6 +1,6 @@
 /**
  * Weather Document to return
- * TODO: use...
+ * TODO: work out how the function works...
  */
 export interface WeatherDocument {
   city: CityLocation;

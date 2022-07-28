@@ -18,7 +18,6 @@ function routes(app: Express){
     app.get('/healthcheck', (req: Request, res: Response) => res.sendStatus(200));
     app.get('/api/sessions', requireUser, getUserSessionsHandler);
     app.get('/api/products/:productId', validateResource(getProductSchema), getProductHandler);
-    //app.get('/api/weather/:city', validateCity(getProductSchema), getCityWeatherHandler);
     app.get('/api/weather/city', getCityWeatherHandler);
 
     //POST routes
