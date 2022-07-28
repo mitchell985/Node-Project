@@ -1,6 +1,6 @@
 import axios from "axios";
 import config from "config";
-import { CityLocation, interpretWeatherCode, WeatherDocument } from "../models/weather.model";
+import { CityLocation, interpretWeatherCode } from "../models/weather.model";
 import logger from "../utils/logger";
 
 /**
