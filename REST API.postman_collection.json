@@ -435,6 +435,46 @@
 			]
 		},
 		{
+			"name": "Weather",
+			"item": [
+				{
+					"name": "Get Weather",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/weather/city?cityName=Auckland",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"weather",
+								"city"
+							],
+							"query": [
+								{
+									"key": "cityName",
+									"value": "Auckland"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test Weather Get",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Get Index",
 			"request": {
 				"method": "GET",
