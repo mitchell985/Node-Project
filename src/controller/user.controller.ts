@@ -8,8 +8,9 @@ export async function createUserHandler(req: Request<Record<string, unknown>, Re
         const user = await createUser(req.body);
         return res.send(user);
     }
-    catch(e: any){
+    catch(e){
         logger.error(e);
-        return res.status(409).send(e.message);
+        //return res.status(409).send(e.message);
+        return res.status(409).send("Server error: user already exists");
     }
 }

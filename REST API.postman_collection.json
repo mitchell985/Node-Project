@@ -468,7 +468,67 @@
 					"name": "Test Weather Get",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "https://api.open-meteo.com/v1/forecast?latitude=-36&longitude=174&current_weather=true",
+							"protocol": "https",
+							"host": [
+								"api",
+								"open-meteo",
+								"com"
+							],
+							"path": [
+								"v1",
+								"forecast"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "-36"
+								},
+								{
+									"key": "longitude",
+									"value": "174"
+								},
+								{
+									"key": "current_weather",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test Geocoding",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://maps.googleapis.com/maps/api/geocode/json?address=erihgiophger&key=AIzaSyA8MOqp0_j1-xCpD4mdP7Ec873iRvtVCN8",
+							"protocol": "https",
+							"host": [
+								"maps",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"maps",
+								"api",
+								"geocode",
+								"json"
+							],
+							"query": [
+								{
+									"key": "address",
+									"value": "erihgiophger"
+								},
+								{
+									"key": "key",
+									"value": "AIzaSyA8MOqp0_j1-xCpD4mdP7Ec873iRvtVCN8"
+								}
+							]
+						}
 					},
 					"response": []
 				}

@@ -3,6 +3,7 @@
  */
 import { Request, Response, NextFunction } from 'express'
 import { AnyZodObject } from 'zod'
+import logger from '../utils/logger';
 
 const validate = (schema: AnyZodObject) => (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -12,8 +13,9 @@ const validate = (schema: AnyZodObject) => (req: Request, res: Response, next: N
             params: req.params
         });
         next();
-    } catch (e: any) {
-        return res.status(400).send(e.errors);
+    } catch (e) {
+        logger.error(e);
+        return res.status(400).send("Path not valid");
     }
 };
 
