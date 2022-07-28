@@ -10,6 +10,7 @@ async function connect(){
         logger.info("Connected to DB");
     } catch (error) {
         logger.error("Could not connect to db");
+        logger.error("Try running 'docker compose up -d'");
         process.exit(1)
     }
 }

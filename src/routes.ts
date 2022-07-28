@@ -5,6 +5,7 @@ import { Express, Request, Response } from "express"
 import { createProductHandler, deleteProductHandler, getProductHandler, updateProductHandler } from "./controller/product.controller";
 import { createUserSessionHandler, deleteSessionHandler, getUserSessionsHandler } from "./controller/session.controller";
 import { createUserHandler } from "./controller/user.controller";
+import { getCityWeatherHandler } from "./controller/weather.controller";
 import requireUser from "./middleware/requireUser";
 import validateResource from "./middleware/validateResource";
 import { createProductSchema, deleteProductSchema, getProductSchema, updateProductSchema } from "./schema/product.schema";
@@ -17,6 +18,8 @@ function routes(app: Express){
     app.get('/healthcheck', (req: Request, res: Response) => res.sendStatus(200));
     app.get('/api/sessions', requireUser, getUserSessionsHandler);
     app.get('/api/products/:productId', validateResource(getProductSchema), getProductHandler);
+    //app.get('/api/weather/:city', validateCity(getProductSchema), getCityWeatherHandler);
+    app.get('/api/weather/:city', getCityWeatherHandler);
 
     //POST routes
     app.post('/api/users', validateResource(createUserSchema), createUserHandler);
