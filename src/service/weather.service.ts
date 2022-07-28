@@ -16,7 +16,7 @@ async function fetchCityGeocoding(city:string):Promise<CityLocation> {
       `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${apiKey}`
     );
     return {
-      cityName: city,
+      cityName: cityLocation.data.results[0].formatted_address,
       latitude: cityLocation.data.results[0].geometry.location.lat,
       longitude: cityLocation.data.results[0].geometry.location.lng,
     };
