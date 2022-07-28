@@ -10,7 +10,6 @@ export async function createUserHandler(req: Request<Record<string, unknown>, Re
     }
     catch(e){
         logger.error(e);
-        //return res.status(409).send(e.message);
         return res.status(409).send("Server error: user already exists");
     }
 }

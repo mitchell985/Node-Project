@@ -2,13 +2,11 @@ import { Request, Response } from "express";
 import { findWeather } from "../service/weather.service";
 
 export async function getCityWeatherHandler(req: Request, res: Response) {
-    //console.log("Res Locals: \n", res.locals);
-    //console.log("Req Params: \n", req.params);
-    //console.log("Query: ", req.query);
-
-    const city = String(req.query.cityName);
-
-    const weather = await findWeather(city);
-
-    res.send(weather);
+    try{
+        const weather = await findWeather(String(req.query.cityName));
+        return res.send(weather);
+    }
+    catch(e){
+        return res.status(400).send("City couldn't be found");
+    }
 }

@@ -2,12 +2,13 @@
  * Weather Document to return
  * TODO: use...
  */
-// export interface WeatherDocument {
-//   city: CityLocation;
-//   temperature: number;
-//   windspeed: number;
-//   interpretWeatherCode(weatherCode: number): Promise<string>;
-// }
+export interface WeatherDocument {
+  city: CityLocation;
+  temperature: number;
+  windspeed: number;
+  weatherPhrase: string;
+  // interpretWeatherCode(weatherCode: number): Promise<string>;
+}
 
 export interface CityLocation {
   cityName: string;
