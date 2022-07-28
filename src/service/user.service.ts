@@ -14,7 +14,6 @@ export async function createUser(
   } catch (e) {
     logger.error(e);
     throw new Error("Could not create user");
-    //throw new Error(e);
   }
 }
 
