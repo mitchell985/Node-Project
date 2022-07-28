@@ -1,0 +1,29 @@
+export default {
+    port: 3000,
+    dbUri: "mongodb://localhost:27017/rest-api",
+    saltWorkFactor: 10,
+    accessTokenTtl: '15m',
+    refreshTokenTtl: '1y',
+    publicKey: `-----BEGIN PUBLIC KEY-----
+MIGeMA0GCSqGSIb3DQEBAQUAA4GMADCBiAKBgHdC3aHIzEkPJ5IWizLCLNfjtCV6
+0loMKdqPNB+J6/9QKTCRpQ83muN3LpFGoPXflq6jrXh+lAyXXwrONdNszpSqPn6V
+EDJQMdGrSL4RTfngBbeNTxkQ2W5oE2c3A+HT1r+JUuaPaoYDTBE4S0sDVfU1xUTa
+GQJnzmeZwXuwCG09AgMBAAE=
+-----END PUBLIC KEY-----`,
+    privateKey: `-----BEGIN RSA PRIVATE KEY-----
+MIICWwIBAAKBgHdC3aHIzEkPJ5IWizLCLNfjtCV60loMKdqPNB+J6/9QKTCRpQ83
+muN3LpFGoPXflq6jrXh+lAyXXwrONdNszpSqPn6VEDJQMdGrSL4RTfngBbeNTxkQ
+2W5oE2c3A+HT1r+JUuaPaoYDTBE4S0sDVfU1xUTaGQJnzmeZwXuwCG09AgMBAAEC
+gYB0QUUlKUUiTtiHCtzELQ5joP8BrhmRV9wQxpnLyLm5lt2gD8mz7MNaytolGZFc
+PIl5UeqO0+zj3UbzlJJZt+4jHe7DqI4+lC+acGpGpeCb7jsOARmUM0XfPG7H2xx0
+VsLPhuo/TPhU4X0/5Fmgc5RokR/t6H41Gf1Owp/VylPRoQJBALqo2GBb4MghjxR3
+IRZ63uJoCwWv6+qV57CS5jCTV7PI0sus49FCWVVsP/YOZEYPsY4JPRsARDA0/bXD
+06A5j6kCQQCjkH9kDs78uXMar1TTVSfoEsFg7Qj6INBXAi4LYyM+VQscy92pzksq
+rIw6ciE4OE5+F/u9PKIV+isiVBcTmr11AkEAj9iYz0Fe67v48JOR2yobY608eUiG
+bUTSxR+f52VVHAaydCWrd1NDVvJSJEQZAGkNsuDpx0ogQmpD7vSXvQ0+6QJAeBVX
+IauplWvFsPq2aS1kzgIvDS0ZYSIEM0z7ZwrSzil7rhmSVN+K2fqyPRqbfv3/yp1r
+CcThLwdq8ZoREyiRHQJAY+aoedjxNlHDbaW+g/Xb91igGws5hYAi9A62l7a7KCS5
+7/+TwV+rjKZ88n7jM4TM2Y2hrEXjqvY/OKEs83GUNQ==
+-----END RSA PRIVATE KEY-----`,
+    apiKey: "enter your own google maps api key"
+}
