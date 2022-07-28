@@ -19,7 +19,7 @@ function routes(app: Express){
     app.get('/api/sessions', requireUser, getUserSessionsHandler);
     app.get('/api/products/:productId', validateResource(getProductSchema), getProductHandler);
     //app.get('/api/weather/:city', validateCity(getProductSchema), getCityWeatherHandler);
-    app.get('/api/weather/:city', getCityWeatherHandler);
+    app.get('/api/weather/city', getCityWeatherHandler);
 
     //POST routes
     app.post('/api/users', validateResource(createUserSchema), createUserHandler);
