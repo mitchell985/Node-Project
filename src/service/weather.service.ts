@@ -2,7 +2,7 @@ import axios from "axios";
 import config from "config";
 import {
   CityLocation,
-  interpretWeatherCode,
+  getWeatherPhrase,
   WeatherDocument,
 } from "../models/weather.model";
 import logger from "../utils/logger";
@@ -90,7 +90,7 @@ async function getWeather(
       temperature: weather.data.current_weather.temperature,
       windspeed: weather.data.current_weather.windspeed,
       distanceToLocation: distance,
-      weatherPhrase: await interpretWeatherCode(
+      weatherPhrase: getWeatherPhrase(
         weather.data.current_weather.weathercode
       ),
     };
