@@ -22,7 +22,7 @@ export function verifyJwt(token: string) {
     };
   } catch (error) {
     logger.error(error);
-    logger.error("Try creating a session");
+    logger.error("jwt error: Try creating a session or creating a user");
     return {
       valid: false,
       expired: "jwt expired",

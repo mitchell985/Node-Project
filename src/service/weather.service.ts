@@ -1,7 +1,53 @@
 import axios from "axios";
 import config from "config";
-import { CityLocation, interpretWeatherCode, WeatherDocument } from "../models/weather.model";
+import {
+  CityLocation,
+  interpretWeatherCode,
+  WeatherDocument,
+} from "../models/weather.model";
 import logger from "../utils/logger";
+
+function getDistanceFromLatLonInKm(
+  lat1: number,
+  lon1: number,
+  lat2: number,
+  lon2: number
+) {
+  const R = 6371; // Radius of the earth in km
+  const dLat = deg2rad(lat2 - lat1); // deg2rad below
+  const dLon = deg2rad(lon2 - lon1);
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(deg2rad(lat1)) *
+      Math.cos(deg2rad(lat2)) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const d = R * c; // Distance in km
+  return Math.round(d);
+}
+
+function deg2rad(deg: number) {
+  return deg * (Math.PI / 180);
+}
+
+async function getDistance(cityLocation: CityLocation): Promise<number> {
+  try {
+    const currentLocation = await axios.get(
+      `http://ip-api.com/json/?fields=57536`
+    );
+    const distance = getDistanceFromLatLonInKm(
+      currentLocation.data.lat,
+      currentLocation.data.lon,
+      cityLocation.latitude,
+      cityLocation.longitude
+    );
+    return distance;
+  } catch (e) {
+    logger.error(e);
+    throw new Error("Couldn't get distance between locations");
+  }
+}
 
 /**
  *
@@ -9,7 +55,7 @@ import logger from "../utils/logger";
  * @param city location
  * @returns geolocation of that city as a CityLocation
  */
-async function fetchCityGeocoding(city:string):Promise<CityLocation> {
+async function getCityGeocoding(city: string): Promise<CityLocation> {
   const apiKey = config.get<string>("apiKey");
   try {
     const cityLocation = await axios.get(
@@ -28,10 +74,13 @@ async function fetchCityGeocoding(city:string):Promise<CityLocation> {
 
 /**
  * Gets weather at a gps location
- * @param cityLocation 
- * @returns The WeatherDocument
+ * @param cityLocation
+ * @returns The completed WeatherDocument
  */
-async function getWeather(cityLocation: CityLocation):Promise<WeatherDocument> {
+async function getWeather(
+  cityLocation: CityLocation,
+  distance: number
+): Promise<WeatherDocument> {
   try {
     const weather = await axios.get(
       `https://api.open-meteo.com/v1/forecast?latitude=${cityLocation.latitude}&longitude=${cityLocation.longitude}&current_weather=true`
@@ -40,8 +89,11 @@ async function getWeather(cityLocation: CityLocation):Promise<WeatherDocument> {
       city: cityLocation,
       temperature: weather.data.current_weather.temperature,
       windspeed: weather.data.current_weather.windspeed,
-      weatherPhrase: await interpretWeatherCode(weather.data.current_weather.weathercode)
-    }
+      distanceToLocation: distance,
+      weatherPhrase: await interpretWeatherCode(
+        weather.data.current_weather.weathercode
+      ),
+    };
   } catch (e) {
     logger.error(e);
     throw new Error("Invaild City Location");
@@ -53,8 +105,9 @@ async function getWeather(cityLocation: CityLocation):Promise<WeatherDocument> {
  * @param city where you want the weather to come from
  * @returns the weather as a json return (may return multiple cities)
  */
-export async function findWeather(city: string):Promise<WeatherDocument> {
-  const cityLocation = await fetchCityGeocoding(city);
-  //const weatherInfo = await getWeather(cityLocation);
-  return await getWeather(cityLocation);
+export async function findWeather(city: string): Promise<WeatherDocument> {
+  const cityLocation = await getCityGeocoding(city);
+  const distance = await getDistance(cityLocation);
+
+  return await getWeather(cityLocation, distance);
 }
