@@ -90,13 +90,11 @@ async function getWeather(
       temperature: weather.data.current_weather.temperature,
       windspeed: weather.data.current_weather.windspeed,
       distanceToLocation: distance,
-      weatherPhrase: getWeatherPhrase(
-        weather.data.current_weather.weathercode
-      ),
+      weatherPhrase: getWeatherPhrase(weather.data.current_weather.weathercode),
     };
   } catch (e) {
     logger.error(e);
-    throw new Error("Invaild City Location");
+    throw new Error("Invalid City Location");
   }
 }
 

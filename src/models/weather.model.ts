@@ -1,6 +1,5 @@
 /**
- * Weather Document to return
- * TODO: work out how the function works...
+ * Weather Document to return to the user
  */
 export interface WeatherDocument {
   city: CityLocation;
@@ -8,7 +7,6 @@ export interface WeatherDocument {
   windspeed: number;
   distanceToLocation: number;
   weatherPhrase: string;
-  // interpretWeatherCode(weatherCode: number): Promise<string>;
 }
 
 export interface CityLocation {
