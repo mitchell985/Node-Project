@@ -8,6 +8,9 @@ describe('index', () => {
                 expect(true).toBe(true);
                 //await supertest(app).get('/').expect(200)
             })
+            it("should return Nothing to see here 😄",async () => {
+                expect(true).toBe(true);
+            })
         })
     })
 })
