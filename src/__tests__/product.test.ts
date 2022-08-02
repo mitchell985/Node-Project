@@ -1,9 +1,9 @@
 import supertest from "supertest";
 import createServer from "../utils/server";
-import { MongoMemoryServer } from "mongodb-memory-server";
 import mongoose from "mongoose";
 import { createProduct } from "../service/product.service";
 import { signJwt } from "../utils/jwt.utils";
+import { MongoMemoryServer } from "mongodb-memory-server";
 
 const app = createServer();
 
@@ -99,21 +99,27 @@ describe("product", () => {
       });
     });
   });
-  // describe("put product route", () => {
-  //   describe("given the product exists", async () => {
-  //     it("should be able to be able to be updated", async () => {
-  //       const jwt = signJwt(userPayload);
+  describe("put product route", () => {
+    describe.only("given the product exists", () => {
+      it("should be able to be able to be updated", async () => {
+        // const jwt = signJwt(userPayload);
 
-  //       await supertest(app)
-  //         .post("/api/products")
-  //         .set("Authorization", `Bearer ${jwt}`)
-  //         .send(productPayload);
+        // await supertest(app)
+        //   .post("/api/products")
+        //   .set("Authorization", `Bearer ${jwt}`)
+        //   .send(productPayload);
 
-  //       const { statusCode, body } = await supertest(app)
-  //         .put("/api/products")
-  //         .set("Authorization", `Bearer ${jwt}`)
-  //         .send({...productPayload, price: 1500});
-  //     });
-  //   });
-  // });
+        // const { statusCode, body } = await supertest(app)
+        //   .put("/api/products")
+        //   .set("Authorization", `Bearer ${jwt}`)
+        //   .send(productPayload);
+
+        //expect(statusCode).toBe(200);
+
+        //expect(body).toBe({})
+        // console.log("status code: ", statusCode);
+        // console.log("body: ", body);
+      });
+    });
+  });
 });
