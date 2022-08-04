@@ -1,4 +1,4 @@
-## Welcome to my Node JS test project. 👏
+# Welcome to my Node JS test project. 👏
 
 The goal of this project is to create a REST API product database using the Express framework, written in Typescript, then containerized into a Docker container.
 
@@ -20,6 +20,10 @@ Git Hooks:
 - Husky
 - ESLint
 - Lint-staged
+
+## ❯ Testing
+
+The Postman Collection for testing this project is avaliable [here](https://drive.google.com/file/d/1LdpKUbcqDyQdZy1LBoSuvG7WQ5-ZfnFd/view?usp=sharing)
 
 ## ❯ Setup process.
 
@@ -86,7 +90,3 @@ yarn dev
 
 > This starts a local server using `nodemon`, which will watch for any file changes and will restart the server according to these changes.
 > The server address will be displayed to you as `http://localhost:3000`.
-
-### Testing
-
-The Postman Collection is avaliable [here](https://drive.google.com/file/d/1LdpKUbcqDyQdZy1LBoSuvG7WQ5-ZfnFd/view?usp=sharing)
