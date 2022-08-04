@@ -1,9 +1,9 @@
 import supertest from "supertest";
+import { MongoMemoryServer } from "mongodb-memory-server";
 import createServer from "../utils/server";
 import mongoose from "mongoose";
 import { createProduct } from "../service/product.service";
 import { signJwt } from "../utils/jwt.utils";
-import { MongoMemoryServer } from "mongodb-memory-server";
 
 const app = createServer();
 
@@ -26,6 +26,8 @@ const userPayload = {
 };
 
 const jwt = signJwt(userPayload);
+
+jest.setTimeout(10000);
 
 describe("product", () => {
   //creating mongodb instance in memory, for mocking inputs see user.test.ts
@@ -188,9 +190,9 @@ describe("product", () => {
   describe("put product route", () => {
     describe("given the user is not logged in and there is no product", () => {
       it("should return a 403", async () => {
-        const { statusCode } = await supertest(app)
-          .delete(`/api/products/product-123`)
-          .send({ ...productPayload, price: 1000 });
+        const { statusCode } = await supertest(app).delete(
+          `/api/products/product-123`
+        );
 
         //Forbidden
         expect(statusCode).toBe(403);

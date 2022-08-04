@@ -60,7 +60,24 @@ Install docker then start the mongodb container
 docker compose up -d
 ```
 
-### Step 2: Run the Project
+### Step 2: Add a config folder
+
+If you don't have a config folder you'll have to add one inside the src folder using the following template. You need a default.ts, test.ts and if setting up for production, a production.ts file. You'll also need an RSA key, to set the saltWorkFactor and a google geocoding API key.
+
+```ts
+export default {
+    port: 3000,
+    dbUri: "mongodb://localhost:27017/rest-api",
+    saltWorkFactor:,
+    accessTokenTtl: '15m',
+    refreshTokenTtl: '1y',
+    publicKey: ``,
+    privateKey: ``,
+    apiKey: ""
+}
+```
+
+### Step 3: Run the Project
 
 Run this command
 
