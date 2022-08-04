@@ -1,6 +1,4 @@
-## Hi
-
-Welcome to my Node JS test project. 👏
+## Welcome to my Node JS test project. 👏
 
 The goal of this project is to create a REST API product database using the Express framework, written in Typescript, then containerized into a Docker container.
 
