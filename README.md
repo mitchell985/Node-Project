@@ -14,6 +14,7 @@ Database:
 
 Testing:
 - Jest
+- Postman
 
 Git Hooks:
 - Husky
@@ -85,3 +86,7 @@ yarn dev
 
 > This starts a local server using `nodemon`, which will watch for any file changes and will restart the server according to these changes.
 > The server address will be displayed to you as `http://localhost:3000`.
+
+### Testing
+
+The Postman Collection is avaliable [here](https://drive.google.com/file/d/1LdpKUbcqDyQdZy1LBoSuvG7WQ5-ZfnFd/view?usp=sharing)
