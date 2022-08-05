@@ -15,7 +15,7 @@ const validate = (schema: AnyZodObject) => (req: Request, res: Response, next: N
         next();
     } catch (e) {
         logger.error(e);
-        return res.status(400).send("Path not valid");
+        return res.status(400).send("Object is not valid");
     }
 };
 

@@ -7,6 +7,14 @@ import {
 } from "../models/weather.model";
 import logger from "../utils/logger";
 
+/**
+ * Works out how far one gps location is from another.
+ * @param lat1 
+ * @param lon1 
+ * @param lat2 
+ * @param lon2 
+ * @returns distance the locations are in kilometers.
+ */
 function getDistanceFromLatLonInKm(
   lat1: number,
   lon1: number,
@@ -33,7 +41,7 @@ function deg2rad(deg: number) {
 
 async function getDistance(cityLocation: CityLocation): Promise<number> {
   try {
-    const currentLocation = await axios.get(
+    const currentLocation = await axios.get( //get the location of the current public ip
       `http://ip-api.com/json/?fields=57536`
     );
     const distance = getDistanceFromLatLonInKm(
@@ -50,7 +58,6 @@ async function getDistance(cityLocation: CityLocation): Promise<number> {
 }
 
 /**
- *
  * Takes a city name and returns an object with that cities location
  * @param city location
  * @returns geolocation of that city as a CityLocation
@@ -90,13 +97,11 @@ async function getWeather(
       temperature: weather.data.current_weather.temperature,
       windspeed: weather.data.current_weather.windspeed,
       distanceToLocation: distance,
-      weatherPhrase: getWeatherPhrase(
-        weather.data.current_weather.weathercode
-      ),
+      weatherPhrase: getWeatherPhrase(weather.data.current_weather.weathercode),
     };
   } catch (e) {
     logger.error(e);
-    throw new Error("Invaild City Location");
+    throw new Error("Invalid City Location");
   }
 }
 
