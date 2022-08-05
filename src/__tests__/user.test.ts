@@ -36,40 +36,40 @@ const sessionPayload = {
 
 describe("user", () => {
   describe("user registration", () => {
-    // describe("given the username and password are valid", () => {
-    //   it("should return the user payload", async () => {
-    //     const createUserServiceMock = jest
-    //       .spyOn(UserService, "createUser")
-    //       // @ts-ignore
-    //       .mockReturnValueOnce(userPayload);
+    describe("given the username and password are valid", () => {
+      it("should return the user payload", async () => {
+        const createUserServiceMock = jest
+          .spyOn(UserService, "createUser")
+          // @ts-ignore
+          .mockReturnValueOnce(userPayload);
 
-    //     const { statusCode, body } = await supertest(app)
-    //       .post("/api/users")
-    //       .send(userInput);
+        const { statusCode, body } = await supertest(app)
+          .post("/api/users")
+          .send(userInput);
 
-    //     expect(statusCode).toBe(200);
+        expect(statusCode).toBe(200);
 
-    //     expect(body).toEqual(userPayload);
+        expect(body).toEqual(userPayload);
 
-    //     expect(createUserServiceMock).toHaveBeenCalledWith(userInput);
-    //   });
-    // });
-    // describe("given the passwords do not match", () => {
-    //   it("it should return a 400", async () => {
-    //     const createUserServiceMock = jest
-    //       .spyOn(UserService, "createUser")
-    //       // @ts-ignore
-    //       .mockReturnValueOnce(userPayload);
+        expect(createUserServiceMock).toHaveBeenCalledWith(userInput);
+      });
+    });
+    describe("given the passwords do not match", () => {
+      it("it should return a 400", async () => {
+        const createUserServiceMock = jest
+          .spyOn(UserService, "createUser")
+          // @ts-ignore
+          .mockReturnValueOnce(userPayload);
 
-    //     const { statusCode } = await supertest(app)
-    //       .post("/api/users")
-    //       .send({ ...userInput, passwordConfirmation: "doesnotmatch" });
+        const { statusCode } = await supertest(app)
+          .post("/api/users")
+          .send({ ...userInput, passwordConfirmation: "doesnotmatch" });
 
-    //     expect(statusCode).toBe(400);
+        expect(statusCode).toBe(400);
 
-    //     expect(createUserServiceMock).not.toHaveBeenCalled();
-    //   });
-    // });
+        expect(createUserServiceMock).not.toHaveBeenCalled();
+      });
+    });
     describe("given the user service throws", () => {
       it("should return a 409", async () => {
         const createUserServiceMock = jest
@@ -89,40 +89,40 @@ describe("user", () => {
 
   //For a different way of doing things, this is mocking out all the services instead of calling the route with supertest
   describe("create user session", () => {
-    // describe("given the username and password are valid", () => {
-    //   it("should return a signed accessToken & refreshToken", async () => {
-    //     jest
-    //       .spyOn(UserService, "validatePassword")
-    //       // @ts-ignore
-    //       .mockReturnValue(userPayload);
+    describe("given the username and password are valid", () => {
+      it("should return a signed accessToken & refreshToken", async () => {
+        jest
+          .spyOn(UserService, "validatePassword")
+          // @ts-ignore
+          .mockReturnValue(userPayload);
 
-    //     jest
-    //       .spyOn(SessionService, "createSession")
-    //       // @ts-ignore
-    //       .mockReturnValue(sessionPayload);
+        jest
+          .spyOn(SessionService, "createSession")
+          // @ts-ignore
+          .mockReturnValue(sessionPayload);
 
-    //     const req = {
-    //       get: () => {
-    //         return "a user agent";
-    //       },
-    //       body: {
-    //         email: "test@example.com",
-    //         password: "Password",
-    //       },
-    //     };
+        const req = {
+          get: () => {
+            return "a user agent";
+          },
+          body: {
+            email: "test@example.com",
+            password: "Password",
+          },
+        };
 
-    //     const send = jest.fn();
+        const send = jest.fn();
 
-    //     const res = { send };
+        const res = { send };
 
-    //     // @ts-ignore
-    //     await createUserSessionHandler(req, res);
+        // @ts-ignore
+        await createUserSessionHandler(req, res);
 
-    //     expect(send).toHaveBeenCalledWith({
-    //       accessToken: expect.any(String),
-    //       refreshToken: expect.any(String),
-    //     });
-    //   });
-    // });
+        expect(send).toHaveBeenCalledWith({
+          accessToken: expect.any(String),
+          refreshToken: expect.any(String),
+        });
+      });
+    });
   });
 });
